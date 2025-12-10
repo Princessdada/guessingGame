@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guessing Game</title>
+    <link rel="stylesheet" href="/style.css" />
+    <script src="/socket.io/socket.io.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>🎮 Guessing Game</h1>
+        <div class="session-info" id="sessionInfo">
+          Join or create a game session
+        </div>
+      </div>
+
+      <div class="chat-container">
+        <div class="messages" id="messages"></div>
+
+        <div class="input-area">
+         
+          <div id="joinForm">
+            <div class="input-group">
+              <input
+                type="text"
+                id="username"
+                placeholder="Enter your username"
+                required />
+            </div>
+
+            <!-- Session ID input  -->
+            <div class="input-group" id="sessionIdGroup">
+              <input
+                type="text"
+                id="sessionId"
+                placeholder="Paste session ID here to join"
+                required />
+              <small>Enter the session ID shared by the game master</small>
+            </div>
+
+            <!--  display  Session ID -->
+            <div id="sessionIdDisplay" class="hidden">
+              <strong>Your Session ID (auto-generated):</strong>
+              <span id="sessionIdValue"></span>
+              <button class="btn btn-secondary" id="copySessionId">Copy</button>
+              <small>Share this ID with your friends so they can join</small>
+            </div>
+
+            <div class="input-group">
+              <button class="btn btn-primary" id="createBtn">
+                Create New Session
+              </button>
+              <button class="btn btn-success" id="joinBtn">Join Session</button>
+            </div>
+            <small class="helper-text">
+              <strong>Create:</strong> Session ID will be auto-generated |
+              <strong>Join:</strong> Enter the session ID from the game master
+            </small>
+          </div>
+
+       
+          <div id="gameMasterPanel" class="game-master-panel hidden">
+            <h3> Game Master Panel</h3>
+            <div
+              id="playerCountInfo"
+              style="
+                margin-bottom: 15px;
+                padding: 10px;
+                background: rgba(255, 255, 255, 0.5);
+                border-radius: 4px;
+              ">
+              <strong
+                >Players in session: <span id="playerCount">1</span></strong
+              >
+              <small style="display: block; margin-top: 5px; color: #666">
+                You need at least 2 players to start the game
+              </small>
+            </div>
+            <textarea
+              id="question"
+              placeholder="Enter your question here..."></textarea>
+            <input
+              type="text"
+              id="answer"
+              placeholder="Enter the answer (hidden from players)" />
+            <button class="btn btn-primary" id="startGameBtn">
+              Start Game
+            </button>
+            <small>Press Ctrl+Enter to submit</small>
+          </div>
+
+          <!-- Question Display -->
+          <div id="questionDisplay" class="question-display hidden">
+            <h3>Question</h3>
+            <div class="question-text" id="questionText"></div>
+            <div class="timer hidden" id="timer">Time left: 60s</div>
+            <div class="input-group">
+              <input
+                type="text"
+                id="guess"
+                placeholder="Enter your guess..."
+                disabled />
+              <button class="btn btn-primary" id="submitGuessBtn" disabled>
+                Submit Guess
+              </button>
+            </div>
+          </div>
+
+          <!-- Next Round Button -->
+          <div class="input-group next-round-container">
+            <button class="btn btn-secondary hidden" id="nextRoundBtn">
+              Start Next Round
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar for players and scores -->
+      <div class="sidebar-container">
+        <div class="players-list" id="playersList">
+          <h3>Players (0)</h3>
+        </div>
+        <div class="scores" id="scores">
+          <h3>Scores</h3>
+        </div>
+      </div>
+    </div>
+
+    <script src="/game.js"></script>
+  </body>
+</html>

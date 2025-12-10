@@ -1,0 +1,23 @@
+{
+  "name": "guessing-game",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node api.js && node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-session": "^1.18.2",
+    "mongoose": "^9.0.0",
+    "nodemon": "^3.1.11",
+    "socket.io": "^4.8.1",
+    "uuid": "^13.0.0"
+  }
+}
